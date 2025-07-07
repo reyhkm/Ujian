@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ujian Lengkap Oracle Database</title>
+    <!-- Bootstrap CSS from CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Custom Styles -->
+    <style>
+        body {
+            background-color: #f0f2f5;
+        }
+        .quiz-container {
+            max-width: 900px;
+            margin: auto;
+        }
+        .card-header {
+            font-weight: bold;
+            background-color: #e9ecef;
+        }
+        .question-card {
+            margin-bottom: 1.5rem;
+            border: 1px solid #dee2e6;
+            border-radius: .5rem;
+            transition: border-color 0.3s;
+        }
+        .btn-submit {
+            font-size: 1.2rem;
+            padding: 10px 20px;
+        }
+        .feedback-correct {
+            border-left: 5px solid #198754; /* Green */
+        }
+        .feedback-incorrect {
+            border-left: 5px solid #dc3545; /* Red */
+        }
+        .correct-answer-text {
+            color: #198754;
+            font-weight: bold;
+            font-style: italic;
+            margin-top: 10px;
+            display: block;
+        }
+        #result-container {
+            display: none; /* Hidden by default */
+        }
+        .matching-row.feedback-correct {
+            background-color: #d1e7dd;
+        }
+        .matching-row.feedback-incorrect {
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container quiz-container py-5">
+        
+        <!-- Header -->
+        <div class="text-center mb-5">
+            <div class="card" style="background-color: #e0f8e0;">
+                <div class="card-body">
+                    <img src="https://i.imgur.com/2022032.png" alt="Oracle Logo" width="100" class="mb-3">
+                    <h1 class="display-5">UJIAN LENGKAP ORACLE</h1>
+                    <p class="lead">Jawab semua 60 pertanyaan di bawah ini dengan teliti.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Result Container -->
+        <div id="result-container" class="alert alert-info text-center" role="alert">
+            <h4 class="alert-heading">Hasil Kuis Anda</h4>
+            <p id="score-text" class="fs-3"></p>
+            <hr>
+            <p class="mb-0">Scroll ke bawah untuk melihat detail jawaban Anda.</p>
+        </div>
+
+        <form id="quizForm">
+
+            <!-- ================================================== -->
+            <!-- BAGIAN 1: PILIHAN GANDA (20 Soal) -->
+            <!-- ================================================== -->
+            <h2 class="mb-4 border-bottom pb-2">Bagian 1: Pilihan Ganda</h2>
+            
+            <!-- Soal 1-20 -->
+            <div class="card question-card" id="q1-card">
+                <div class="card-header">1. Bagaimana cara untuk login kedalam user:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1a" value="a"><label class="form-check-label" for="q1a">a. <nama_user> <password></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1b" value="b"><label class="form-check-label" for="q1b">b. CONN <nama_user> PASS <password></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1c" value="c"><label class="form-check-label" for="q1c">c. CONN <nama_user>/<password></label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1d" value="d"><label class="form-check-label" for="q1d">d. CONN USER <nama_user> PASS <password></label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q2-card">
+                <div class="card-header">2. Berikut adalah Database Edition yang merupakan full version dari produk ORACLE DATABASE adalah:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2a" value="a"><label class="form-check-label" for="q2a">a. ORACLE STANDARD EDITION</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2b" value="b"><label class="form-check-label" for="q2b">b. ORACLE PERSONAL EDITION</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2c" value="c"><label class="form-check-label" for="q2c">c. ORACLE ENTERPRISE EDITION</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2d" value="d"><label class="form-check-label" for="q2d">d. ORACLE STANDARD EDITION ONE</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q3-card">
+                <div class="card-header">3. Berikut adalah operator logical yang bernilai TRUE apabila salah satu operand adalah TRUE:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3a" value="a"><label class="form-check-label" for="q3a">a. Xor</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3b" value="b"><label class="form-check-label" for="q3b">b. Not</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3c" value="c"><label class="form-check-label" for="q3c">c. And</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3d" value="d"><label class="form-check-label" for="q3d">d. Or</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q4-card">
+                <div class="card-header">4. Apabila kondisi awal bernilai FALSE atau NULL, maka statement selanjutnya yang akan dieksekusi merupakan perintah percabangan:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4a" value="a"><label class="form-check-label" for="q4a">a. IF BERSARANG</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4b" value="b"><label class="form-check-label" for="q4b">b. IF-THEN-ELSIF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4c" value="c"><label class="form-check-label" for="q4c">c. IF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4d" value="d"><label class="form-check-label" for="q4d">d. IF-THEN-ELSE</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q5-card">
+                <div class="card-header">5. Berapakah jumlah memori yang dibutuhkan untuk pemasangan produk oracle database ini:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5a" value="a"><label class="form-check-label" for="q5a">a. 1GB</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5b" value="b"><label class="form-check-label" for="q5b">b. 4GB</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5c" value="c"><label class="form-check-label" for="q5c">c. 512GB</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5d" value="d"><label class="form-check-label" for="q5d">d. 2GB</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q6-card">
+                <div class="card-header">6. Berikut adalah System Privileges, kecuali:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6a" value="a"><label class="form-check-label" for="q6a">a. Create User</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6b" value="b"><label class="form-check-label" for="q6b">b. Create Procedure</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6c" value="c"><label class="form-check-label" for="q6c">c. Create Table</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6d" value="d"><label class="form-check-label" for="q6d">d. Create Session</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q7-card">
+                <div class="card-header">7. Berikut yang bukan merupakan ciri penggunaan statement IF adalah:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7a" value="a"><label class="form-check-label" for="q7a">a. Terdapat 2 ejaan kata kunci yang harus diingat: ELSIF dan END IF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7b" value="b"><label class="form-check-label" for="q7b">b. Terdapat Lebih dari satu IF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7c" value="c"><label class="form-check-label" for="q7c">c. Paling banyak terdapat satu klausa ELSE</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7d" value="d"><label class="form-check-label" for="q7d">d. Jika kontrol kondisi boolean bernilai TRUE, urutan statemen yang berhubungan yang akan dieksekusi</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q8-card">
+                <div class="card-header">8. Apabila user memilih CREATE AND CONFIGURE A DATABASE pada proses instalasi produk Oracle, maka hanya terdapat ... tahap:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8a" value="a"><label class="form-check-label" for="q8a">a. 10</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8b" value="b"><label class="form-check-label" for="q8b">b. 8</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8c" value="c"><label class="form-check-label" for="q8c">c. 12</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8d" value="d"><label class="form-check-label" for="q8d">d. 7</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q9-card">
+                <div class="card-header">9. Berikut adalah simbol-simbol tunggal, kecuali:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9a" value="a"><label class="form-check-label" for="q9a">a. /</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9b" value="b"><label class="form-check-label" for="q9b">b. +</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9c" value="c"><label class="form-check-label" for="q9c">c. :=</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9d" value="d"><label class="form-check-label" for="q9d">d. @</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q10-card">
+                <div class="card-header">10. Apabila ingin memberikan hak untuk menghubungkan user dengan database menggunakan syntax:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10a" value="a"><label class="form-check-label" for="q10a">a. Grant Database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10b" value="b"><label class="form-check-label" for="q10b">b. Grant Connect Database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10c" value="c"><label class="form-check-label" for="q10c">c. Grant Session</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10d" value="d"><label class="form-check-label" for="q10d">d. Grant Table</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q11-card">
+                <div class="card-header">11. Perintah yang digunakan untuk menghasilkan satu baris(row) sesuai aturan ANSI dalam blok PL/SQL adalah:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11a" value="a"><label class="form-check-label" for="q11a">a. UPDATE EMP SET ENAME = 'ARIEF' WHERE DEPTNO = 30</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11b" value="b"><label class="form-check-label" for="q11b">b. SELECT MAX(SAL) INTO V_MAX_SAL FROM EMP</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11c" value="c"><label class="form-check-label" for="q11c">c. DELETE FROM MAHASISWA WHERE NPM = 5664812</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11d" value="d"><label class="form-check-label" for="q11d">d. SELECT DEPTNO INTO V_DEPTNO FROM DEPT</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q12-card">
+                <div class="card-header">12. Apa yang dimaksud dengan Object Privileges:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12a" value="a"><label class="form-check-label" for="q12a">a. hak akses untuk objek - objek yang tidak berkaitan dengan database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12b" value="b"><label class="form-check-label" for="q12b">b. hak akses untuk menampilkan aksi-aksi tertentu pada suatu tabel khusus, view, sequence atau procedur.</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12c" value="c"><label class="form-check-label" for="q12c">c. hak akses untuk mengidentifikasi sebuah objek pada user lain sehingga dapat digunakan oleh user terkait</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12d" value="d"><label class="form-check-label" for="q12d">d. hak akses untuk melakukan intruksi pada user baru tanpa melewati SYSDBA</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q13-card">
+                <div class="card-header">13. Berikut adalah perintah percabangan dalam struktur kontrol, kecuali:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13a" value="a"><label class="form-check-label" for="q13a">a. IF-THEN-ELSE</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13b" value="b"><label class="form-check-label" for="q13b">b. SELECT</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13c" value="c"><label class="form-check-label" for="q13c">c. IF-THEN-ELSIF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13d" value="d"><label class="form-check-label" for="q13d">d. IF</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q14-card">
+                <div class="card-header">14. APA SAJA YANG PERLU DIKETAHUI SEBELUM MEMBUAT TABLESPACE UNTUK DATABASE:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14a" value="a"><label class="form-check-label" for="q14a">a. tipe informasi yang akan disimpan dalam tablespace</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14b" value="b"><label class="form-check-label" for="q14b">b. banyak file data yang akan mencakup tablespace</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14c" value="c"><label class="form-check-label" for="q14c">c. SEMUA BENAR</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14d" value="d"><label class="form-check-label" for="q14d">d. disk drive mana saja file data akan disimpan secara fisik</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q15-card">
+                <div class="card-header">15. APA SAJA KEGUNAAN DBCA:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15a" value="a"><label class="form-check-label" for="q15a">a. Menghapus database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15b" value="b"><label class="form-check-label" for="q15b">b. Membuat database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15c" value="c"><label class="form-check-label" for="q15c">c. Mengubah konfigurasi database</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15d" value="d"><label class="form-check-label" for="q15d">d. Semua benar</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q16-card">
+                <div class="card-header">16. Akun-akun administrative yaitu:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16a" value="a"><label class="form-check-label" for="q16a">a. SYSTEM</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16b" value="b"><label class="form-check-label" for="q16b">b. A DAN B BENAR (SYSTEM dan SYS)</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16c" value="c"><label class="form-check-label" for="q16c">c. A DAN B SALAH</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16d" value="d"><label class="form-check-label" for="q16d">d. SYS</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q17-card">
+                <div class="card-header">17. Apabila ingin menginstal softwarenya saja tanpa melakukan konfigurasi database, pilih tipe instalasi:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17a" value="a"><label class="form-check-label" for="q17a">a. CREATE AND CONFIGURE A DATABASE</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17b" value="b"><label class="form-check-label" for="q17b">b. UPGRADE AN EXISTING DATABASE</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17c" value="c"><label class="form-check-label" for="q17c">c. INSTALL DATABASE SOFTWARE ONLY</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17d" value="d"><label class="form-check-label" for="q17d">d. CREATE A DATABASE LATER</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q18-card">
+                <div class="card-header">18. Berikut adalah statement untuk mengakhiri perintah percabangan IF, adalah:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18a" value="a"><label class="form-check-label" for="q18a">a. END IF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18b" value="b"><label class="form-check-label" for="q18b">b. ENDIF</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18c" value="c"><label class="form-check-label" for="q18c">c. STOP</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18d" value="d"><label class="form-check-label" for="q18d">d. END</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q19-card">
+                <div class="card-header">19. Apakah membuat user dengan login sebagai SCOTT dapat dilakukan:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19a" value="a"><label class="form-check-label" for="q19a">a. Tidak, karena SCOTT hanya user biasa</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19b" value="b"><label class="form-check-label" for="q19b">b. Bisa, login sebagai SCOTT dengan ditambah AS SYSDBA</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19c" value="c"><label class="form-check-label" for="q19c">c. Jawaban A dan B Benar</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19d" value="d"><label class="form-check-label" for="q19d">d. Jawaban A dan B Salah</label></div>
+                </div>
+            </div>
+            <div class="card question-card" id="q20-card">
+                <div class="card-header">20. Berikut adalah System Privileges, kecuali:</div>
+                <div class="card-body">
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20a" value="a"><label class="form-check-label" for="q20a">a. Create User</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20b" value="b"><label class="form-check-label" for="q20b">b. Create Procedure</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20c" value="c"><label class="form-check-label" for="q20c">c. Create Table</label></div>
+                    <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20d" value="d"><label class="form-check-label" for="q20d">d. Create Session</label></div>
+                </div>
+            </div>
+
+            <!-- ================================================== -->
+            <!-- BAGIAN 2: BENAR/SALAH (20 Soal) -->
+            <!-- ================================================== -->
+            <h2 class="mt-5 mb-4 border-bottom pb-2">Bagian 2: Benar atau Salah</h2>
+
+            <!-- Soal 21-40 -->
+            <div class="card question-card" id="q21-card"><div class="card-header">21. DBCA dapat digunakan untuk menghapus database.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q21" id="q21true" value="true"><label class="form-check-label" for="q21true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q21" id="q21false" value="false"><label class="form-check-label" for="q21false">Salah</label></div></div></div>
+            <div class="card question-card" id="q22-card"><div class="card-header">22. Database File Location, merupakan field yang dijumpai ketika melakukan instalasi Oracle yang berfungsi untuk menentukan lokasi penyimpanan database.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q22" id="q22true" value="true"><label class="form-check-label" for="q22true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q22" id="q22false" value="false"><label class="form-check-label" for="q22false">Salah</label></div></div></div>
+            <div class="card question-card" id="q23-card"><div class="card-header">23. INSERT berfungsi untuk memasukkan record yang baru ke dalam sebuah tabel.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q23" id="q23true" value="true"><label class="form-check-label" for="q23true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q23" id="q23false" value="false"><label class="form-check-label" for="q23false">Salah</label></div></div></div>
+            <div class="card question-card" id="q24-card"><div class="card-header">24. Aturan penamaan variabel dalam blok PL/SQL tidak boleh sama dengan nama kolom dalam tabel.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q24" id="q24true" value="true"><label class="form-check-label" for="q24true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q24" id="q24false" value="false"><label class="form-check-label" for="q24false">Salah</label></div></div></div>
+            <div class="card question-card" id="q25-card"><div class="card-header">25. DBCA merupakan singkatan dari DATABASE CONFIGURATION ASSISTANT.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q25" id="q25true" value="true"><label class="form-check-label" for="q25true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q25" id="q25false" value="false"><label class="form-check-label" for="q25false">Salah</label></div></div></div>
+            <div class="card question-card" id="q26-card"><div class="card-header">26. "Manipulate" termasuk dalam Reserved Word Oracle.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q26" id="q26true" value="true"><label class="form-check-label" for="q26true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q26" id="q26false" value="false"><label class="form-check-label" for="q26false">Salah</label></div></div></div>
+            <div class="card question-card" id="q27-card"><div class="card-header">27. Aturan penamaan suatu variabel dalam blok PL/SQL harus sama dengan nama kolom pada tabel yang bersangkutan.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q27" id="q27true" value="true"><label class="form-check-label" for="q27true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q27" id="q27false" value="false"><label class="form-check-label" for="q27false">Salah</label></div></div></div>
+            <div class="card question-card" id="q28-card"><div class="card-header">28. DATA WAREHOUSE termasuk dalam tipe database.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q28" id="q28true" value="true"><label class="form-check-label" for="q28true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q28" id="q28false" value="false"><label class="form-check-label" for="q28false">Salah</label></div></div></div>
+            <div class="card question-card" id="q29-card"><div class="card-header">29. Group Function tidak dapat digunakan dalam blok PL/SQL.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q29" id="q29true" value="true"><label class="form-check-label" for="q29true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q29" id="q29false" value="false"><label class="form-check-label" for="q29false">Salah</label></div></div></div>
+            <div class="card question-card" id="q30-card"><div class="card-header">30. Fungsi prefix dan sufix dalam penamaan sebuah variabel adalah untuk membedakan objek-objek database.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q30" id="q30true" value="true"><label class="form-check-label" for="q30true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q30" id="q30false" value="false"><label class="form-check-label" for="q30false">Salah</label></div></div></div>
+            <div class="card question-card" id="q31-card"><div class="card-header">31. Database yang saling berelasi dan berintegrasi biasa disebut dengan Relational Database Management System(RDBMS).</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q31" id="q31true" value="true"><label class="form-check-label" for="q31true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q31" id="q31false" value="false"><label class="form-check-label" for="q31false">Salah</label></div></div></div>
+            <div class="card question-card" id="q32-card"><div class="card-header">32. Anonymous block adalah blok PL/SQL yang memiliki nama yang dapat mengambil parameter dan dapat dipanggil.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q32" id="q32true" value="true"><label class="form-check-label" for="q32true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q32" id="q32false" value="false"><label class="form-check-label" for="q32false">Salah</label></div></div></div>
+            <div class="card question-card" id="q33-card"><div class="card-header">33. Data Warehouse berfungsi untuk menyimpan data dalam periode lama dan menerima data dalam operasi read.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q33" id="q33true" value="true"><label class="form-check-label" for="q33true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q33" id="q33false" value="false"><label class="form-check-label" for="q33false">Salah</label></div></div></div>
+            <div class="card question-card" id="q34-card"><div class="card-header">34. Blok-blok yang terdapat dalam PL/SQL adalah Blok Utama dan Blok Sekunder.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q34" id="q34true" value="true"><label class="form-check-label" for="q34true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q34" id="q34false" value="false"><label class="form-check-label" for="q34false">Salah</label></div></div></div>
+            <div class="card question-card" id="q35-card"><div class="card-header">35. Create and configure a database, adalah pilihan untuk melakukan instalasi software Oracle tanpa membuat penyimpanan databasenya.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q35" id="q35true" value="true"><label class="form-check-label" for="q35true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q35" id="q35false" value="false"><label class="form-check-label" for="q35false">Salah</label></div></div></div>
+            <div class="card question-card" id="q36-card"><div class="card-header">36. Database Cloning adalah sebuah metode untuk membuat database dari awal.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q36" id="q36true" value="true"><label class="form-check-label" for="q36true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q36" id="q36false" value="false"><label class="form-check-label" for="q36false">Salah</label></div></div></div>
+            <div class="card question-card" id="q37-card"><div class="card-header">37. Dalam struktur kontrol terdapat 3 bentuk percabangan(IF) yaitu IF, IF-THEN-ELSE dan NESTED IF.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q37" id="q37true" value="true"><label class="form-check-label" for="q37true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q37" id="q37false" value="false"><label class="form-check-label" for="q37false">Salah</label></div></div></div>
+            <div class="card question-card" id="q38-card"><div class="card-header">38. Dengan memindahkan klausa END IF bersarang di akhir setiap kumpulan kondisi dan kegiatan yang lainnya, merupakan ciri khas yang dimiliki statement IF-THEN-ELSIF bila dibandingkan dengan NESTED IF.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q38" id="q38true" value="true"><label class="form-check-label" for="q38true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q38" id="q38false" value="false"><label class="form-check-label" for="q38false">Salah</label></div></div></div>
+            <div class="card question-card" id="q39-card"><div class="card-header">39. Delimiter terdiri dari simbol tunggal dan simbol majemuk.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q39" id="q39true" value="true"><label class="form-check-label" for="q39true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q39" id="q39false" value="false"><label class="form-check-label" for="q39false">Salah</label></div></div></div>
+            <div class="card question-card" id="q40-card"><div class="card-header">40. Fungsi REVOKE adalah untuk menarik hak akses dari user terkait.</div><div class="card-body"><div class="form-check"><input class="form-check-input" type="radio" name="q40" id="q40true" value="true"><label class="form-check-label" for="q40true">Benar</label></div><div class="form-check"><input class="form-check-input" type="radio" name="q40" id="q40false" value="false"><label class="form-check-label" for="q40false">Salah</label></div></div></div>
+
+            <!-- ================================================== -->
+            <!-- BAGIAN 3: MENJODOHKAN (20 Soal) -->
+            <!-- ================================================== -->
+            <h2 class="mt-5 mb-4 border-bottom pb-2">Bagian 3: Menjodohkan</h2>
+
+            <!-- Soal 41-50 (Set 1) -->
+            <div class="card question-card" id="m1-card">
+                <div class="card-header">Soal 41-50: Jodohkan pernyataan berikut dengan jawaban yang tepat.</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead><tr><th>Pernyataan</th><th>Jawaban</th></tr></thead>
+                            <tbody>
+                                <tr class="matching-row" id="m1_1-row"><td class="align-middle">41. Backup pada database digunakan untuk</td><td><select class="form-select" name="m1_1"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_2-row"><td class="align-middle">42. DBA adalah singkatan dari</td><td><select class="form-select" name="m1_2"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_3-row"><td class="align-middle">43. SID merupakan singkatan dari</td><td><select class="form-select" name="m1_3"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_4-row"><td class="align-middle">44. Salah satu dari akun administrative adalah</td><td><select class="form-select" name="m1_4"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_5-row"><td class="align-middle">45. Fungsi dari Management Options adalah</td><td><select class="form-select" name="m1_5"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_6-row"><td class="align-middle">46. Salah satu kegunaan dari DBCA adalah</td><td><select class="form-select" name="m1_6"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_7-row"><td class="align-middle">47. Melakukan pembaharuan pada database yang sudah ada/pernah diinstal sebelumnya</td><td><select class="form-select" name="m1_7"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_8-row"><td class="align-middle">48. Root, atau lokasi dari keseluruhan software Oracle Database yang akan diinstal</td><td><select class="form-select" name="m1_8"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_9-row"><td class="align-middle">49. Password default yang digunakan dalam pembuatan database adalah</td><td><select class="form-select" name="m1_9"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                                <tr class="matching-row" id="m1_10-row"><td class="align-middle">50. Perintah atau statement yang digunakan untuk menghapus database adalah</td><td><select class="form-select" name="m1_10"><option selected disabled value="">Pilih...</option><option value="a">Recovery ketika ada kehilangan data</option><option value="b">Database Administrator</option><option value="c">SYSTEM IDENTIFIER</option><option value="d">SYSTEM</option><option value="e">Mengatur database agar bisa diatur dengan Oracle Enterprise Manager</option><option value="f">Mengubah konfigurasi database</option><option value="g">Upgrade an existing database</option><option value="h">Oracle Base</option><option value="i">oracle</option><option value="j">DROP</option></select></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Soal 51-60 (Set 2) -->
+            <div class="card question-card" id="m2-card">
+                <div class="card-header">Soal 51-60: Jodohkan pernyataan berikut dengan jawaban yang tepat.</div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead><tr><th>Pernyataan</th><th>Jawaban</th></tr></thead>
+                            <tbody>
+                                <tr class="matching-row" id="m2_1-row"><td class="align-middle">51. Melakukan operasi instalasi Oracle secara penuh sekaligus melakukan konfigurasi database</td><td><select class="form-select" name="m2_1"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_2-row"><td class="align-middle">52. Tahap instalasi yang memiliki 2 pilihan yaitu Dekstop Class dan Server Class</td><td><select class="form-select" name="m2_2"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_3-row"><td class="align-middle">53. Tampilan hasil konfigurasi yang telah dilakukan sebelum masuk ke tahap penginstalan</td><td><select class="form-select" name="m2_3"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_4-row"><td class="align-middle">54. Pemasangan Oracle Database pada PC yang diperuntukkan dalam skala personal/pribadi</td><td><select class="form-select" name="m2_4"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_5-row"><td class="align-middle">55. Direktori oracle home dari software Oracle Database yang akan diinstal</td><td><select class="form-select" name="m2_5"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_6-row"><td class="align-middle">56. Syarat yang direkomendasikan Oracle dalam membuat password database</td><td><select class="form-select" name="m2_6"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_7-row"><td class="align-middle">57. Lokasi penyimpanan Database Oracle</td><td><select class="form-select" name="m2_7"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_8-row"><td class="align-middle">58. Tahapan dalam proses instalasi produk Oracle Database</td><td><select class="form-select" name="m2_8"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_9-row"><td class="align-middle">59. Pemasangan Oracle Database pada PC yang memang diperuntukkan dalam skala jaringan</td><td><select class="form-select" name="m2_9"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                                <tr class="matching-row" id="m2_10-row"><td class="align-middle">60. User yang memiliki hak akses penuh dalam oracle</td><td><select class="form-select" name="m2_10"><option selected disabled value="">Pilih...</option><option value="a">Create and Configure a Database</option><option value="b">System Class</option><option value="c">Summary</option><option value="d">Desktop Class</option><option value="e">Software Location</option><option value="f">Huruf Kapital</option><option value="g">Database File Location</option><option value="h">8</option><option value="i">Server Class</option><option value="j">System</option></select></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="text-center mt-5">
+                <button type="submit" class="btn btn-primary btn-lg btn-submit">Selesai & Lihat Nilai</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS Bundle from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <!-- Custom Quiz Logic -->
+    <script>
+        // Kunci Jawaban Lengkap (60 Soal)
+        const correctAnswers = {
+            // Pilihan Ganda (1-20)
+            q1: 'c', q2: 'c', q3: 'd', q4: 'd', q5: 'a', q6: 'a', q7: 'b', q8: 'b', q9: 'c', q10: 'c',
+            q11: 'b', q12: 'b', q13: 'b', q14: 'c', q15: 'd', q16: 'b', q17: 'c', q18: 'a', q19: 'c', q20: 'a',
+            // Benar/Salah (21-40)
+            q21: 'true', q22: 'true', q23: 'true', q24: 'true', q25: 'true', q26: 'false', q27: 'false', q28: 'true', q29: 'false', q30: 'true',
+            q31: 'true', q32: 'false', q33: 'true', q34: 'true', q35: 'false', q36: 'false', q37: 'true', q38: 'true', q39: 'true', q40: 'true',
+            // Menjodohkan Set 1 (41-50)
+            m1_1: 'a', m1_2: 'b', m1_3: 'c', m1_4: 'd', m1_5: 'e', m1_6: 'f', m1_7: 'g', m1_8: 'h', m1_9: 'i', m1_10: 'j',
+            // Menjodohkan Set 2 (51-60)
+            m2_1: 'a', m2_2: 'b', m2_3: 'c', m2_4: 'd', m2_5: 'e', m2_6: 'f', m2_7: 'g', m2_8: 'h', m2_9: 'i', m2_10: 'j'
+        };
+
+        const totalQuestions = Object.keys(correctAnswers).length;
+
+        document.getElementById('quizForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            let score = 0;
+            const formData = new FormData(this);
+            const userAnswers = {};
+            for (let [name, value] of formData.entries()) {
+                userAnswers[name] = value;
+            }
+
+            // Check answers and provide feedback
+            for (const questionName in correctAnswers) {
+                let questionElement;
+                const isMatching = questionName.startsWith('m');
+
+                if (isMatching) {
+                    questionElement = document.getElementById(`${questionName}-row`);
+                } else {
+                    questionElement = document.getElementById(`${questionName}-card`);
+                }
+
+                // Clear previous feedback
+                questionElement.classList.remove('feedback-correct', 'feedback-incorrect');
+                const oldFeedback = questionElement.querySelector('.correct-answer-text');
+                if (oldFeedback) oldFeedback.remove();
+
+                if (userAnswers[questionName] === correctAnswers[questionName]) {
+                    score++;
+                    questionElement.classList.add('feedback-correct');
+                } else {
+                    questionElement.classList.add('feedback-incorrect');
+                    
+                    const correctAnswerValue = correctAnswers[questionName];
+                    let correctAnswerText = '';
+
+                    if (isMatching) {
+                        const select = document.querySelector(`select[name="${questionName}"]`);
+                        correctAnswerText = select.querySelector(`option[value="${correctAnswerValue}"]`).textContent;
+                    } else if (correctAnswerValue === 'true' || correctAnswerValue === 'false') {
+                        correctAnswerText = correctAnswerValue === 'true' ? 'Benar' : 'Salah';
+                    } else {
+                        correctAnswerText = document.querySelector(`label[for="${questionName}${correctAnswerValue}"]`).textContent;
+                    }
+
+                    const feedbackElement = document.createElement('span');
+                    feedbackElement.className = 'correct-answer-text';
+                    feedbackElement.innerHTML = `<i class="bi bi-check-circle-fill"></i> Jawaban benar: ${correctAnswerText}`;
+                    
+                    if (isMatching) {
+                        questionElement.querySelector('td:last-child').appendChild(feedbackElement);
+                    } else {
+                        questionElement.querySelector('.card-body').appendChild(feedbackElement);
+                    }
+                }
+            }
+
+            // Calculate and display final score
+            const finalScore = (score / totalQuestions) * 100;
+            const resultContainer = document.getElementById('result-container');
+            const scoreText = document.getElementById('score-text');
+            
+            scoreText.textContent = `Nilai Anda: ${finalScore.toFixed(0)} (${score} dari ${totalQuestions} benar)`;
+            
+            if (finalScore >= 75) {
+                resultContainer.className = 'alert alert-success text-center';
+            } else if (finalScore >= 50) {
+                resultContainer.className = 'alert alert-warning text-center';
+            } else {
+                resultContainer.className = 'alert alert-danger text-center';
+            }
+
+            resultContainer.style.display = 'block';
+            resultContainer.scrollIntoView({ behavior: 'smooth' });
+
+            // Disable all inputs
+            this.querySelectorAll('input, select, button').forEach(input => input.disabled = true);
+        });
+    </script>
+
+</body>
+</html>
